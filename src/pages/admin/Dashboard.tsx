@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import Card from "../components/Card";
-import Table from "../components/Table";
+import Sidebar from "../../components/Sidebar";
+import Navbar from "../../components/Navbar";
+import Card from "../../components/Card";
+import Table from "../../components/Table";
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,

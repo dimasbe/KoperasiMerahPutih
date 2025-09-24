@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Auth/Login";
-import Dashboard from "./pages/Dashboard";
-import AnggotaList from "./pages/Anggota/AnggotaList";
-import AnggotaForm from "./pages/Anggota/AnggotaForm";
+import Dashboard from "./pages/admin/Dashboard";
+import AnggotaList from "./pages/admin/Anggota/AnggotaList";
+import AnggotaForm from "./pages/admin/Anggota/AnggotaForm";
 import PrivateRoute from "./components/PrivateRoute";
-import SimpananList from "./pages/Simpanan/SimpananList";
-import SimpananForm from "./pages/Simpanan/SimpananForm";
-import PinjamanAjukan from "./pages/Pinjaman/PinjamanAjukan";
-import PinjamanList from "./pages/Pinjaman/PinjamanList";
-import Laporan from "./pages/Laporan/Laporan";
+import SimpananList from "./pages/admin/Simpanan/SimpananList";
+import SimpananForm from "./pages/admin/Simpanan/SimpananForm";
+import PinjamanAjukan from "./pages/admin/Pinjaman/PinjamanAjukan";
+import PinjamanList from "./pages/admin/Pinjaman/PinjamanList";
+import Laporan from "./pages/admin/Laporan/Laporan";
 
 const App: React.FC = () => {
   return (

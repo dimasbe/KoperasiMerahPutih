@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar";
-import Navbar from "../../components/Navbar";
-import Table from "../../components/Table";
+import Sidebar from "../../../components/Sidebar";
+import Navbar from "../../../components/Navbar";
+import Table from "../../../components/Table";
 import { FaChevronLeft, FaChevronRight, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 interface Simpanan {

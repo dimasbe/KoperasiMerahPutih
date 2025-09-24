@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import Sidebar from "../../components/Sidebar";
-import Navbar from "../../components/Navbar";
+import Sidebar from "../../../components/Sidebar";
+import Navbar from "../../../components/Navbar";
 import { useReactToPrint } from "react-to-print";
 import { FaPrint } from "react-icons/fa";
 import {
