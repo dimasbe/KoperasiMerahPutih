@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
-import Navbar from "../../components/Navbar";
+import Sidebar from "../../../components/Sidebar";
+import Navbar from "../../../components/Navbar";
 import { FaEdit, FaTrash, FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface Anggota {
