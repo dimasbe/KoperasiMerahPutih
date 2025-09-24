@@ -2,17 +2,19 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 interface PrivateRouteProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-  const token = localStorage.getItem("token");
+  const isLoggedIn = !!localStorage.getItem("token"); // contoh cek login
+  const role = localStorage.getItem("role"); // contoh cek role
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
+  if (!isLoggedIn) {
+    return <Navigate to="/" replace />;
   }
 
-  return children;
+  // bisa tambahkan cek role kalau mau per route
+  return <>{children}</>;
 };
 
 export default PrivateRoute;
