@@ -9,26 +9,33 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(""); // Reset error message
+    setError(""); // reset error
 
-    const response = await fetch("http://localhost:8000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch("http://localhost:8000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      // Simpan token JWT ke localStorage
-      localStorage.setItem("token", data.token);
-      // Arahkan ke dashboard atau halaman yang diinginkan
-      navigate("/dashboard");
-    } else {
-      // Tampilkan pesan error jika login gagal
-      setError(data.message || "Login failed. Please try again.");
+      if (response.ok) {
+        // Simpan token & role dari response
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.user.role); // pastikan API kirim role
+
+        // Redirect berdasarkan role
+        if (data.user.role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/"); // misalnya anggota/guest diarahkan ke landing page
+        }
+      } else {
+        setError(data.message || "Login gagal, silakan coba lagi.");
+      }
+    } catch (err) {
+      setError("Terjadi kesalahan, periksa koneksi server.");
     }
   };
 
@@ -37,6 +44,7 @@ const Login: React.FC = () => {
       <div className="w-full max-w-md p-6 bg-white rounded-md shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
+
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">Email</label>
@@ -49,6 +57,7 @@ const Login: React.FC = () => {
               required
             />
           </div>
+
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700">Password</label>
             <input
@@ -60,7 +69,11 @@ const Login: React.FC = () => {
               required
             />
           </div>
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md">
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md"
+          >
             Login
           </button>
         </form>

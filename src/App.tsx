@@ -1,17 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Auth/Login";
 import AdminRoutes from "./routes/AdminRoutes";
+import GuestRoutes from "./routes/GuestRoutes";
+import Login from "./pages/Auth/Login";
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* Public Route */}
-        <Route path="/" element={<Login />} />
+        {/* Login global */}
+        <Route path="/login" element={<Login />} />
 
-        {/* Admin Routes */}
-        <Route path="/*" element={<AdminRoutes />} />
+        {/* Semua route admin */}
+        <Route path="/admin/*" element={<AdminRoutes />} />
+
+        {/* Guest routes harus paling bawah */}
+        <Route path="/*" element={<GuestRoutes />} />
       </Routes>
     </Router>
   );

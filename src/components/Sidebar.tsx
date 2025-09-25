@@ -1,18 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-// Import ikon yang diperlukan dari react-icons/fa
 import { FaTachometerAlt, FaUsers, FaCoins, FaHandshake, FaChartBar } from "react-icons/fa";
 
 const Sidebar: React.FC = () => {
     const location = useLocation();
 
-    // Tambahkan properti 'icon' ke setiap objek menu
     const menu = [
-        { name: "Beranda", path: "/dashboard", icon: <FaTachometerAlt /> },
-        { name: "Anggota", path: "/anggota", icon: <FaUsers /> },
-        { name: "Simpanan", path: "/simpanan", icon: <FaCoins /> },
-        { name: "Pinjaman", path: "/pinjaman", icon: <FaHandshake /> },
-        { name: "Laporan", path: "/laporan", icon: <FaChartBar /> },
+        { name: "Beranda", path: "/admin/dashboard", icon: <FaTachometerAlt /> },
+        { name: "Anggota", path: "/admin/anggota", icon: <FaUsers /> },
+        { name: "Simpanan", path: "/admin/simpanan", icon: <FaCoins /> },
+        { name: "Pinjaman", path: "/admin/pinjaman", icon: <FaHandshake /> },
+        { name: "Laporan", path: "/admin/laporan", icon: <FaChartBar /> },
     ];
 
     return (
@@ -23,12 +21,9 @@ const Sidebar: React.FC = () => {
                     <li key={item.path}>
                         <Link
                             to={item.path}
-                            className={`flex items-center px-3 py-2 rounded ${location.pathname === item.path
-                                ? "bg-gray-400"
-                                : "hover:bg-gray-700"
+                            className={`flex items-center px-3 py-2 rounded ${location.pathname === item.path ? "bg-gray-400" : "hover:bg-gray-700"
                                 }`}
                         >
-                            {/* Menambahkan ikon di sini */}
                             <div className="mr-3">{item.icon}</div>
                             {item.name}
                         </Link>
@@ -40,3 +35,4 @@ const Sidebar: React.FC = () => {
 };
 
 export default Sidebar;
+
